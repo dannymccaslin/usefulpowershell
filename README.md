@@ -1,7 +1,7 @@
 # usefulpowershell
 This is a collection of useful Powershell scripts I have created over the years.
 
-#Repository Contents 
+# Repository Contents 
 * __admin-monitor.ps1__ ------ Monitor for admin account creation in a domain 
 * __replicateGroupMembership.ps1__ ------ Male a user a member of all of the same groups as another user 
 * __disabledComputerCleanup.ps1__ ------ Disables unused computers and moves them to a segregated OU 
