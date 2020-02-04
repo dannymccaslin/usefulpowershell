@@ -7,3 +7,4 @@ This is a collection of useful Powershell scripts I have created over the years.
 * __disabledComputerCleanup.ps1__ ------ Disables unused computers and moves them to a segregated OU 
 * __disableUser.ps1__ ------ Disables a user account,sets their mailbox type as Shared, and removes their Office365 License 
 * __disabledUserMgmt.ps1__ ------ Finds disabled users who last logged in 90 days ago and moves them to a quarantined disabled user OU, also removes group membership. 
+* __DecommissionServer.ps1__ ------ Removes a server from Active Directory, and deletes it from VCenter. Pwerfect for getting rid of servers you have upgraded.
