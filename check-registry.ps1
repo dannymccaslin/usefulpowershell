@@ -2,10 +2,12 @@
 .SYNOPSIS
   Checks the registry to make sure that a few keys related to IOCs are correctly configured
 .DESCRIPTION
-  Checks the registry for Indicators of Compromise. EnableLUA set to 0 means that UAC is disabled. UseLogonCredentials
-  means that logon usernames and passwords are unencrypted in memory. LocalAccountTokenFilterPolicy means that UAC is
-  disabled in RDP, and DisablePasswordChange means tha the machine account password never changes. I got these from a great 
-  presentation at RVASec 2019: https://www.youtube.com/watch?v=3wyPyEvs3O4&t=1394s 
+  Checks the registry for Indicators of Compromise. 
+  ** EnableLUA set to 0 means that UAC is disabled. 
+  ** UseLogonCredentials means that logon usernames and passwords are unencrypted in memory. 
+  ** LocalAccountTokenFilterPolicy means that UAC is disabled in RDP 
+  ** DisablePasswordChange means tha the machine account password never changes. 
+  I got these from a great presentation at RVASec 2019: https://www.youtube.com/watch?v=3wyPyEvs3O4&t=1394s 
 .NOTES
   Version:        1.0
   Author:         Danny McCaslin
@@ -34,7 +36,7 @@ try {
     New-EventLog -LogName Application -Source "regMonitor" 
 }
 
-#I tried a few different ways to create the objects we are looking for. honestly, this was the shortesty
+#I tried a few different ways to create the objects we are looking for. honestly, this was the shortest
 $keys = @("EnableLUA","UseLogonCredentials","LocalAccountTokenFilterPolicy","DisablePasswordChange")
 $paths = @("HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\",'HKLM:\SYSTEM\CurrentControlSet\Control\SecurityProviders\WDigest', "HKLM:\SOFTWARE\Microsoft\Windows\CurrentVersion\Policies\System\","HKLM:\SYSTEM\CurrentControlSet\Services\Netlogon\Parameters")
 $values = @(1,0,0,0)
