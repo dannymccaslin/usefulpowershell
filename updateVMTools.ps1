@@ -13,6 +13,8 @@
     updateVMTools vcenter.internal.example.com
 #>
 $viServer = $args[0]
+write-host "Connecting..."
+write-host $viServer
 connect-viserver -server $viServer
 
 get-vm  | % {Get-view $_.id} |  select name, @{Name="ToolsVersion"; Expression={$_.config.tools.
