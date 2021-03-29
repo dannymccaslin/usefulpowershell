@@ -9,10 +9,10 @@
 .INPUTS
   username of user to be disabled, with no domain name. 
 .NOTES
-  Version:        1.0
+  Version:        1.5
   Author:         Danny McCaslin
-  Creation Date:  1/15/2020
-  Purpose/Change: Initial script development
+  Creation Date:  3/29/2021
+  Purpose/Change: Fixed error in MSOL
 .EXAMPLE
   disableUser.ps1 danny.mccaslin
 #>
@@ -29,11 +29,11 @@ $Session = New-PSSession –ConfigurationName Microsoft.Exchange –ConnectionUr
 Import-PSSession $Session -DisableNameChecking -AllowClobber
 
 Set-RemoteMailbox -Identity $userprincipalname -Type Shared
-
+Exit-PSSession -identity $Session
 #Connect to Office365 portal. Will prompt for valid credentials
 import-module MsOnline
 Connect-MsolService
-$AccountSKU = ""
+$AccountSKU = Get-MsolAccountSKU
 
 #Remove Office365 Licenses
 Set-MsolUserLicense -UserPrincipalName $userprincipalname -RemoveLicenses $AccountSKU 
